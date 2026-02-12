@@ -1,0 +1,108 @@
+
+> shceduler@0.1.0 build
+> next build
+
+▲ Next.js 16.1.5 (Turbopack)
+- Environments: .env
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 3 errors:
+./node_modules/@clerk/shared/dist/runtime/react/index.mjs:14:1
+Export default doesn't exist in target module
+[0m [90m 12 |[39m [36mimport[39m { eventMethodCalled } [36mfrom[39m [32m"../telemetry-wqMDWlvR.mjs"[39m[33m;[39m
+ [90m 13 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useCallback[33m,[39m useEffect[33m,[39m useMemo[33m,[39m useRef[33m,[39m useState[33m,[39m useSyncExternalStore } [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 14 |[39m [36mimport[39m useSWR[33m,[39m { [33mSWRConfig[39m[33m,[39m useSWRConfig } [36mfrom[39m [32m"swr"[39m[33m;[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 15 |[39m [36mimport[39m useSWRInfinite [36mfrom[39m [32m"swr/infinite"[39m[33m;[39m
+ [90m 16 |[39m [36mimport[39m { dequal } [36mfrom[39m [32m"dequal"[39m[33m;[39m
+ [90m 17 |[39m [36mimport[39m useSWRMutation [36mfrom[39m [32m"swr/mutation"[39m[33m;[39m[0m
+
+The export default was not found in module [project]/node_modules/@clerk/shared/node_modules/swr/dist/index/react-server.mjs [app-rsc] (ecmascript).
+Did you mean to import unstable_serialize?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs [Client Component Browser]
+    ./app/(main)/layout.jsx [Client Component Browser]
+    ./app/(main)/layout.jsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs [Client Component SSR]
+    ./app/(main)/layout.jsx [Client Component SSR]
+    ./app/(main)/layout.jsx [Server Component]
+
+  Server Component:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs
+    ./node_modules/@clerk/clerk-react/dist/chunk-36EXAXVP.mjs
+    ./app/(auth)/sign-up/[[...sign-up]]/page.jsx
+
+
+./node_modules/@clerk/shared/dist/runtime/react/index.mjs:15:1
+Export default doesn't exist in target module
+[0m [90m 13 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useCallback[33m,[39m useEffect[33m,[39m useMemo[33m,[39m useRef[33m,[39m useState[33m,[39m useSyncExternalStore } [36mfrom[39m [32m"react"[39m[33m;[39m
+ [90m 14 |[39m [36mimport[39m useSWR[33m,[39m { [33mSWRConfig[39m[33m,[39m useSWRConfig } [36mfrom[39m [32m"swr"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 15 |[39m [36mimport[39m useSWRInfinite [36mfrom[39m [32m"swr/infinite"[39m[33m;[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 16 |[39m [36mimport[39m { dequal } [36mfrom[39m [32m"dequal"[39m[33m;[39m
+ [90m 17 |[39m [36mimport[39m useSWRMutation [36mfrom[39m [32m"swr/mutation"[39m[33m;[39m
+ [90m 18 |[39m[0m
+
+The export default was not found in module [project]/node_modules/@clerk/shared/node_modules/swr/dist/infinite/react-server.mjs [app-rsc] (ecmascript).
+Did you mean to import unstable_serialize?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs [Client Component Browser]
+    ./app/(main)/layout.jsx [Client Component Browser]
+    ./app/(main)/layout.jsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs [Client Component SSR]
+    ./app/(main)/layout.jsx [Client Component SSR]
+    ./app/(main)/layout.jsx [Server Component]
+
+  Server Component:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs
+    ./node_modules/@clerk/clerk-react/dist/chunk-36EXAXVP.mjs
+    ./app/(auth)/sign-up/[[...sign-up]]/page.jsx
+
+
+./node_modules/@clerk/shared/dist/runtime/react/index.mjs:14:1
+Export useSWRConfig doesn't exist in target module
+[0m [90m 12 |[39m [36mimport[39m { eventMethodCalled } [36mfrom[39m [32m"../telemetry-wqMDWlvR.mjs"[39m[33m;[39m
+ [90m 13 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useCallback[33m,[39m useEffect[33m,[39m useMemo[33m,[39m useRef[33m,[39m useState[33m,[39m useSyncExternalStore } [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 14 |[39m [36mimport[39m useSWR[33m,[39m { [33mSWRConfig[39m[33m,[39m useSWRConfig } [36mfrom[39m [32m"swr"[39m[33m;[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 15 |[39m [36mimport[39m useSWRInfinite [36mfrom[39m [32m"swr/infinite"[39m[33m;[39m
+ [90m 16 |[39m [36mimport[39m { dequal } [36mfrom[39m [32m"dequal"[39m[33m;[39m
+ [90m 17 |[39m [36mimport[39m useSWRMutation [36mfrom[39m [32m"swr/mutation"[39m[33m;[39m[0m
+
+The export useSWRConfig was not found in module [project]/node_modules/@clerk/shared/node_modules/swr/dist/index/react-server.mjs [app-rsc] (ecmascript).
+Did you mean to import SWRConfig?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs [Client Component Browser]
+    ./app/(main)/layout.jsx [Client Component Browser]
+    ./app/(main)/layout.jsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs [Client Component SSR]
+    ./app/(main)/layout.jsx [Client Component SSR]
+    ./app/(main)/layout.jsx [Server Component]
+
+  Server Component:
+    ./node_modules/@clerk/shared/dist/runtime/react/index.mjs
+    ./node_modules/@clerk/clerk-react/dist/chunk-36EXAXVP.mjs
+    ./app/(auth)/sign-up/[[...sign-up]]/page.jsx
+
+
+    at ./node_modules/ (clerk/shared/dist/runtime/react/index.mjs:14:1)
+    at ./node_modules/ (clerk/shared/dist/runtime/react/index.mjs:15:1)
+    at ./node_modules/ (clerk/shared/dist/runtime/react/index.mjs:14:1)
