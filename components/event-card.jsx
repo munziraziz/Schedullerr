@@ -45,3 +45,7 @@ const EventCard = ({ event, username , isPublic = false }) => {
     )
 }
 export default EventCard
+
+
+
+
