@@ -1,3 +1,4 @@
+"use server"
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/prisma";
 export async function getUserAvaialability() {
@@ -20,6 +21,7 @@ export async function getUserAvaialability() {
     if (!user || !user.availability) {
         return null;
     }
+
 
     const availabilityData = {
         timeGap: user.availability.timeGap

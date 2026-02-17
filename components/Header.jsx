@@ -27,7 +27,7 @@ const Header = async () => {
 
         </SignedOut>
         <SignedIn>
-          <Usermenu />
+          <Usermenu/>
         </SignedIn>
       </div>
     </nav>
