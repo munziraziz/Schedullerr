@@ -102,3 +102,62 @@ export async function deleteEvent(eventId) {
     return { success: true }
 
 }
+
+
+export async function getEventDetails(username,eventId){
+    const event = await db.event.findFirst({
+        where:{
+            id:eventId,
+            user:{
+                username:username
+            }
+        },
+        include:{
+            user:{
+                select:{
+                    name:true,
+                    email:true,
+                    imageUrl:true,
+                    username:true,
+                }
+            }
+        }
+    })
+    return event;
+}
+
+export async function getEventAvailabilty(eventId){
+    const event = await db.event.findUnique({
+        where:{
+            id:eventId
+        },
+        include:{
+            user:{
+                include:{
+                    availability:{
+                        select:{
+                            days:true,
+                            timeGap:true,
+                        }
+                    },
+                    bookings:{
+                        select:{
+                            startTime:true,
+                            endTime:true,
+                            date:true,
+                        }
+                    }
+                }
+            }
+        }
+        
+    })
+    if(!event || !event.user.availability){
+        return [];
+    }
+
+    const {availability,bookings} = event.user;
+
+    
+    
+}

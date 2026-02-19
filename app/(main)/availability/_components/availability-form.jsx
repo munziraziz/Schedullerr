@@ -14,14 +14,27 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { timeSlots } from "../data";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import useFetch from "@/hooks/use-fetch";
+import { updateAvailability } from "@/actions/availability";
 
 const AvailabilityForm = ({ initialData }) => {
-  const { register, handleSubmit, control, setValue, watch } = useForm({
+  const { register, handleSubmit, control, setValue, watch, formState: { errors } } = useForm({
     resolver: zodResolver(availabilitySchema),
     defaultValues: { ...initialData },
   });
+
+ 
+  const [data, loading, error, fnupdateAvailability] = useFetch(updateAvailability);
+  const onSubmit = async (data) => {
+    await fnupdateAvailability(data);
+
+  }
+
+
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {[
         "monday",
         "tuesday",
@@ -64,18 +77,18 @@ const AvailabilityForm = ({ initialData }) => {
                   render={({ field }) => {
                     return (
                       <Select
-                          onValueChange={field.onChange}
-                      value = {field.value}
+                        onValueChange={field.onChange}
+                        value={field.value}
                       >
                         <SelectTrigger className="w-32">
                           <SelectValue placeholder="Start Time" />
                         </SelectTrigger>
                         <SelectContent>
                           {timeSlots.map(time => {
-                            return(
-                            <SelectItem key={time} value={time}>
+                            return (
+                              <SelectItem key={time} value={time}>
                                 {time}
-                                </SelectItem>
+                              </SelectItem>
                             );
                           })}
                         </SelectContent>
@@ -90,18 +103,18 @@ const AvailabilityForm = ({ initialData }) => {
                   render={({ field }) => {
                     return (
                       <Select
-                      onValueChange={field.onChange}
-                      value = {field.value}
+                        onValueChange={field.onChange}
+                        value={field.value}
                       >
                         <SelectTrigger className="w-32">
                           <SelectValue placeholder="End Time" />
                         </SelectTrigger>
                         <SelectContent>
                           {timeSlots.map(time => {
-                            return(
-                            <SelectItem key={time} value={time}>
+                            return (
+                              <SelectItem key={time} value={time}>
                                 {time}
-                                </SelectItem>
+                              </SelectItem>
                             );
                           })}
                         </SelectContent>
@@ -109,11 +122,38 @@ const AvailabilityForm = ({ initialData }) => {
                     );
                   }}
                 />
+
+                {errors[day]?.endTime && (
+                  <span className="text-red-500 text-sm ml-2">
+                    {errors[day].endTime.message}
+                  </span>
+                )}
               </>
             )}
           </div>
         );
       })}
+      <div className="flex items-center space-x-4">
+        <span className="w-48" >
+          Minimum gap before booking(minutes):
+        </span>
+        <Input
+          type="number"
+          {...register("timegap", {
+            valueAsNumber: true,
+          })}
+          className="w-32"
+        />
+        {errors?.timeGap && (
+          <span className="text-red-500 text-sm ml-2">
+            {errors.timeGap.message}
+          </span>
+
+        )}
+      </div>
+      {error && <div className="text-red-500 text-sm ml-2">{error?.message}</div>}
+      <Button type="submit" className="mt-5" disabled={loading}>{loading ? "Updating..." : "Update Availability"}</Button>
+
     </form>
   );
 };
