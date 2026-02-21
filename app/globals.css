@@ -129,4 +129,11 @@
   .gradient-title {
     @apply font-extrabold text-7xl pb-4 pr-2 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent;
   }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
