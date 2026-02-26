@@ -1,4 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { getUserMeetings } from "@/actions/meetings";
+import MeetingsList from "./_components/meetings-list";
+import { Suspense } from "react";
 
 const metadata = {
     title: "Meetings",
@@ -7,14 +10,36 @@ const metadata = {
 const MeetingsPage = () => {
   return (
     <Tabs defaultValue="upcoming">
+
   <TabsList>
     <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
     <TabsTrigger value="past">Past</TabsTrigger>
   </TabsList>
-  <TabsContent value="upcoming">Make changes to your account here.</TabsContent>
-  <TabsContent value="password">Change your password here.</TabsContent>
+
+  <TabsContent value="upcoming">
+    <Suspense fallback={<div>Loading upcoming meetings...</div>}>
+      <UpcomingMeetings />
+    </Suspense>
+    </TabsContent> 
+
+  <TabsContent value="past">
+    <Suspense fallback={<div>Loading past meetings...</div>}>
+      <PastMeetings />
+    </Suspense>
+    </TabsContent>
 </Tabs>
   )
+}
+
+async function UpcomingMeetings(){
+    const meetings = await getUserMeetings("upcoming");
+    return <MeetingsList meetings={meetings} type="upcoming" />;
+
+}
+
+async function PastMeetings(){
+    const meetings = await getUserMeetings("past");
+    return <MeetingsList meetings={meetings} type="past" />;
 }
 
 export default MeetingsPage
